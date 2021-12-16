@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OOP</title>
+</head>
+	  <link rel="stylesheet" href="style.css">
+	<div class="navBar">
+	<button class="testButton"> <a href="git.html"> Git</a></button>
+	<button class="testButton"><a href="index.html"> Docker</a></button>
+	<button class="testButton"> <a href="index.html"> Azure</a></button>
+	<button class="testButton"> <a href="vi.html"> Vi</a></button>
+	<button class="testButton"> <a href="linux.html"> Linux</a></button>
+	<button class="testButton"> <a href="python.html"> Python</a></button>
+	<button class="testButton"> <a href="aaa.html"> AAA</a></button>
+	<button class="testButton"> <a href="PythonArticles.html"> OOP</a></button>
+	<button class="testButton"> <a href="FacadeMethod.html"> Facade Method</a></button>
+	</div> 
+<body>
+<h1>Princples of Object Oriented Programming: Encapsulation, Inheritance, Polymorphism, and Abstraction.  </h1> 
+<p>We are encapuslating the methods and other class using a base class and protecting from editing. </p>
+<p> As we see we create this addition class but it is encapuslated by a class called Calculation.
+
+<code> <pre> """Addition Class"""
+from calc.calculations.calculation import Calculation
+
+class Addition(Calculation):
+    """ calculation addition class"""
+    def get_result(self):
+        """get the addition results"""
+        sum_of_values = 0.0
+        for value in self.values:
+            sum_of_values = value + sum_of_values
+        return sum_of_values
+</pre> </code> 
+
+<p> Using the same code we are now looking at inheriting the values and data from Calculation. As we see we call values which is inherited from Calculation. The code below shows it being created </p>
+<code> <pre> """Calculation Class"""
+class Calculation:
+    """ calculation abstract base class"""
+    # pylint: disable=too-few-public-methods
+    def __init__(self,values: tuple):
+        """ constructor method"""
+        self.values = Calculation.convert_args_to_tuple_of_float(values)
+    @classmethod
+    def create(cls,values: tuple):
+        """ factory method"""
+        return cls(values)
+    @staticmethod
+    def convert_args_to_tuple_of_float(values: tuple):
+        """ standardize values to list of floats"""
+        #lists can be modified and tuple cannot, tuple are faster.
+        #We need to convert the tuple of potentially random data types (its raw data)
+        #into a standard data format to keep things consistent so we convert it to float
+        #then i make it a tuple again because i actually won't need to change the calculation values
+        #I can also use it as a list and then i would be able to edit the calculation
+        list_values_float = []
+        for item in values:
+            list_values_float.append(float(item))
+        return tuple(list_values_float)
+</pre> </code>
+<p> For our next concept we talk about polymoprhism. This idea is that a single function or object can be used in more than one way. In our case we do this with the self.something, the code below shows this example </p>
+<code> <pre>""" content of test_sample.py#"""
+
+
+def inc(x_value):
+    """ Increment Function adds one to the x_value"""
+    return x_value + 1
+
+
+class Calculator:
+    """ This is the Calculator class"""
+
+    result = 0
+
+    def get_result(self):
+        """ Get Result of Calculation"""
+        return self.result
+
+    def add_number(self, value_a):
+        """ adds number to result"""
+        self.result = self.result + value_a
+        return self.result
+
+    def subtract_number(self, value_a):
+        """ subtract number from result"""
+        self.result = self.result - value_a
+        return self.result
+
+    def multiply_number(self, value_a):
+        """ Multiply numbers"""
+        self.result = self.result * value_a
+        return self.result
+
+    def divide_number(self, value_a):
+        """ Dividing Numbers """
+        try:
+            self.result = self.result / value_a
+        except ZeroDivisionError:
+            print("Divison error by 0")
+        return self.result
+ </pre> </code>
+ <p> The final topic is Abstraction. In the case of python we use Abstraction by importing. This is seen multiple places but here is a perfect example </p>
+ <code> <pre> """Subtraction Class"""
+import pprint
+
+from calc.calculations.calculation import Calculation
+
+class Subtraction(Calculation):
+    """subtraction calculation object"""
+    def get_result(self):
+        """get the subtraction results"""
+        difference_of_values = 0.0
+        for value in self.values:
+            difference_of_values =   difference_of_values - value
+            pprint.pprint(value)
+        return difference_of_values
+ </pre> </code>
+<button> <a href="landing.html"> Go Back</a></button>
+</body>
+</html>

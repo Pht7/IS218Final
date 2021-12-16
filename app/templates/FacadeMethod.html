@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facade Design Pattern Used on project</title>
+</head>
+	  <link rel="stylesheet" href="style.css">
+	<div class="navBar">
+	<button class="testButton"> <a href="git.html"> Git</a></button>
+	<button class="testButton"><a href="index.html"> Docker</a></button>
+	<button class="testButton"> <a href="index.html"> Azure</a></button>
+	<button class="testButton"> <a href="vi.html"> Vi</a></button>
+	<button class="testButton"> <a href="linux.html"> Linux</a></button>
+	<button class="testButton"> <a href="python.html"> Python</a></button>
+	<button class="testButton"> <a href="aaa.html"> AAA</a></button>
+	<button class="testButton"> <a href="PythonArticles.html"> OOP</a></button>
+	<button class="testButton"> <a href="FacadeMethod.html"> Facade Method</a></button>
+	</div> 
+<body>
+<h1> Facade Design Pattern </h1> 
+
+<p> Throughout the project we use a design pattern which was called Facade Method? What is the Facade Method? It makes a complex code base into more managable pieces and makes the code more simple.</p>
+<p> We create a complex calculator but the ability to recall is useful. We create this complex code of history as shown below. It has multiple methods. </p>
+<code> <pre> 
+"""Calculation history Class"""
+from calculator.operations.addition import Addition
+from calculator.operations.subtract import Subtract
+from calculator.operations.multiply import Multiply
+class Calculations:
+    """Create caculation classes for storing our history"""
+    historyLS = []
+    @staticmethod
+    def clear():
+        """Clear all items from our list"""
+        Calculations.historyLS.clear()
+        return True
+    @staticmethod
+    def count():
+        """Get length"""
+        return len(Calculations.historyLS)
+    @staticmethod
+    def last_item():
+        """Get last item using index of -1"""
+        return Calculations.historyLS[-1]
+    @staticmethod
+    def last_item_value():
+        """Get last item value"""
+        calc = Calculations.last_item()
+        """Will call get result from other classes"""
+        return calc.get_result()
+    @staticmethod
+    def first_item():
+        """First item in index not value"""
+        return Calculations.history[0]
+    @staticmethod
+    def get_calc(x):
+        """Getting value x from index [0,x-1]"""
+        return Calculations.historyLS[x]
+    @staticmethod
+    def add_calc(calc):
+        """Call history"""
+        return Calculations.historyLS.append(calc)
+    @staticmethod
+    def add_add_calc(values):
+        """Stores addition function into history LS"""
+        Calculations.add_calc(Addition.create(values))
+        """Return result"""
+        return Calculations.last_item_value()
+    @staticmethod
+    def add_sub_calc(values):
+        """Stores addition function into history LS"""
+        Calculations.add_calc(Subtract.create(values))
+        """Return result"""
+        return Calculations.last_item_value()
+    @staticmethod
+    def add_multi_calc(values):
+        """Stores addition function into history LS"""
+        Calculations.add_calc(Multiply.create(values))
+        """Return result"""
+        return Calculations.last_item_value()
+
+
+
+
+</pre> </code>
+
+<p> Afterwards we now use this complex code in a more easy style. While we can define all these functions repeated it is more simple to just recall them. This also allows us call method again and fix any broken in a more simple style as well. Finally, as we see we call the other functions within the same class to make sure everything is seperated.</p> 
+<button> <a href="landing.html"> Go Back</a></button>
+</body>
+</html>

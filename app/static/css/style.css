@@ -1,0 +1,13 @@
+body{
+	background-color: red;
+    font-size: 200%;
+}
+.navBar{
+	font-size: 25px;
+	border-radius: 12px;
+}
+.testButton{
+	border-radius: 12px;
+	background-color: transparent;
+	width: 150px;
+}
